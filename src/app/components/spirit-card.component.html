@@ -1,7 +1,7 @@
 <div class="spirit-card">
     <div class="spirit-header">
       <div class="expansion-icon" *ngIf="getExpansion() !== expansion.BASE">
-        <img class ="expansion-icon" [src]="'si-picker/assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
+        <img class ="expansion-icon" [src]="'assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
       </div>
 
       <div class="spirit-name">{{ spirit.name }} {{ aspect ? '(' + aspect.name + ')' : '' }}</div>
