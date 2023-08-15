@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: lightgray;
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+  }

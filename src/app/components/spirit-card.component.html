@@ -1,0 +1,55 @@
+<div class="spirit-card">
+    <div class="spirit-header">
+      <div class="expansion-icon" *ngIf="getExpansion() !== expansion.BASE">
+        <img class ="expansion-icon" [src]="'/assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
+      </div>
+
+      <div class="spirit-name">{{ spirit.name }} {{ aspect ? '(' + aspect.name + ')' : '' }}</div>
+    </div>
+    <div class="spirit-image" *ngIf="!isCollapsed">
+      <img [src]="imageUrl" alt="Spirit Image">
+      
+      <div class="complexity-container">
+        <div class="complexity-bar-container">
+            <div class="complexity-label">
+                <b>Complexity:</b>
+              </div>
+              <div class="complexity-bar" [style.--complexity-width.%]="getComplexityWidth(spirit.complexity)">
+                <span class="complexity-text">{{ spirit.complexity }}</span>
+              </div>
+        </div>
+        <div class="complexity-badge-container" *ngIf="aspect">
+            <div class="complexity-badge" [ngClass]="getComplexityBadgeClass(aspect.complexityChange)">
+                <div class="badge-text">Complexity</div>
+                <b>{{ getComplexityBadgeText(aspect.complexityChange) }}</b>
+              </div>
+          </div>
+      </div>
+      
+     
+      <div class="powers-container">
+        <div class="power-bar-container">
+          <div class="power-bar offense" [style.height.px]="spirit.powers.offense * 15"  [ngClass]="{ negative: spirit.powers.offense === -1 }"></div>
+          <div class="power-bar-label">Offense</div>
+        </div>
+        <div class="power-bar-container">
+          <div class="power-bar control" [style.height.px]="spirit.powers.control * 15" [ngClass]="{ negative: spirit.powers.control === -1 }"></div>
+          <div class="power-bar-label">Control</div>
+        </div>
+        <div class="power-bar-container">
+          <div class="power-bar fear" [style.height.px]="spirit.powers.fear * 15" [ngClass]="{ negative: spirit.powers.fear === -1 }"></div>
+          <div class="power-bar-label">Fear</div>
+        </div>
+        <div class="power-bar-container">
+          <div class="power-bar defense" [style.height.px]="spirit.powers.defense * 15" [ngClass]="{ negative: spirit.powers.defense === -1 }"></div>
+          <div class="power-bar-label">Defense</div>
+        </div>
+        <div class="power-bar-container">
+          <div class="power-bar utility" [style.height.px]="spirit.powers.utility * 15"  [ngClass]="{ negative: spirit.powers.utility === -1 }"></div>
+          <div class="power-bar-label">Utility</div>
+        </div>
+      </div>
+    </div>
+   
+
+  </div>
