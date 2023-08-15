@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1692132142416,
+  "timestamp": 1692132718107,
   "index": "/si-picker/index.html",
   "assetGroups": [
     {
@@ -154,7 +154,7 @@
     "/si-picker/favicon.ico": "56a24d8e58fb8c089a855d8fd2c8ff65ab1df164",
     "/si-picker/index.html": "a0e746ee4b8e94c5e2860703ddc2d8e4a63b47c3",
     "/si-picker/main.100ee7277de2ff75.js": "cc48331d7f13cfb9111c7b4fc7b1e9743a907fe4",
-    "/si-picker/manifest.webmanifest": "0625e4e72c41e498c870487b264fba6cbc6be754",
+    "/si-picker/manifest.webmanifest": "bb5fdebc22728faf0553e8378ee9e43005acc932",
     "/si-picker/polyfills.505a52fb92f000e7.js": "f4e7dc57f6d151f67cad0abfa68bc807ede2c53e",
     "/si-picker/runtime.e4855a9f040ece53.js": "198f94be1de00fc8d00ec2e5f5ac7b870c6ec870",
     "/si-picker/styles.5920cb4bec33f101.css": "c96924f847bb695fea94ee3358b4212bbe603cbe"
