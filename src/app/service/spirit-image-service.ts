@@ -14,7 +14,7 @@ export class SpiritImageService {
   }
 
   getImage(name: string): Observable<Blob> {
-    const imageUrl = "/assets/spirit-images/"+name.replaceAll(" ", "_")+ ".png"
+    const imageUrl = "si-picker/assets/spirit-images/"+name.replaceAll(" ", "_")+ ".png"
     if (this.imageCache.has(imageUrl)) {
       return this.imageCache.get(imageUrl)!;
     }
