@@ -9,135 +9,114 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  max-width: 600px; /* Set a max width for the card */
+  max-width: 600px;
   min-width: 350px;
-  margin: 0 auto; /* Center the card horizontally */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
-  border-radius: 8px; /* Add rounded corners */
-
-}
-
-
-.spirit-content {
-  z-index: 1; /* Ensure the text is above the overlay */
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 .spirit-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Adjust alignment */
-    flex-wrap: wrap; /* Allow header content to wrap on smaller screens */
-    position: relative; /* Add this line to enable positioning of the icon */
-    height: 40px;
-    /* Add this line to ensure space between the icon and name */
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+  height: 40px;
+  gap: 10px;
 }
 
 .spirit-name {
   flex: 1;
-  width: 100%; /* Expand to full width */
+  width: 100%;
   font-weight: bolder;
   font-size: 18px;
-  overflow: hidden; /* Hide overflowed content */
-  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
-}
-.expansion-icon {
-  /* Existing styles */
-  font-size: 1.5rem; /* Adjust the font size as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .expansion-icon {
-  position: relative; /* Change to relative positioning */
-  max-height: 30px; /* Set a maximum height for the icon */
+  font-size: 1.5rem;
 }
 
 .spirit-image {
-  /* Add these lines for image scaling */
   position: relative;
   width: 100%;
   overflow: hidden;
   display: flex;
-  max-height: 300px; /* Set a maximum height for the image */
+  max-height: 300px;
   object-fit: cover;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px; /* Add rounded corners */
-
+  border-radius: 8px;
 }
+
 .spirit-image img {
-  /* Add this line to ensure the image scales correctly */
   max-width: 100%;
   height: auto;
 }
 
 .complexity-container {
   display: flex;
-  flex-direction: column; /* Change to row layout */
+  flex-direction: column;
   position: absolute;
-  top: 10px; /* Add margin from the top */
- right: 5px;
-  width:330px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
-  background-color: rgba(0, 0, 0, .6); /* Semi-transparent background color */
-  border-radius: 8px; /* Add rounded corners */
+  top: 10px;
+  right: 5px;
+  width: 330px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
 }
 
 .complexity-bar-container {
-  margin-top: 10px; /* Add margin from the top */
+  margin-top: 10px;
   margin-left: 10px;
   display: flex;
-  width:100%;
+  width: 100%;
 }
 
 .complexity-label {
-  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
-  padding: 7px 10px; /* Add padding to the label */
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 7px 10px;
   font-size: 14px;
-  font-weight: bold; /* Add font weight for boldness */
-  color: black; /* Change color for visibility */
+  font-weight: bold;
+  color: black;
   align-self: flex-start;
-  
-  border-radius: 8px; /* Add rounded corners */
-
+  border-radius: 8px;
 }
 
 .complexity-bar {
   background-color: red;
-  height: 30px; /* Set a fixed height for the complexity bar */
-  width: calc((var(--complexity-width, 25%) + 10px)); /* Use variable for width */
+  height: 30px;
+  width: calc((var(--complexity-width, 25%) + 10px));
   display: flex;
   align-items: center;
-  padding: 0 10px; /* Add internal margins */
-  align-self: flex-start; /* Align the bar to the top of the container */
-  border-radius: 8px; /* Add rounded corners */
-
+  padding: 0 10px;
+  align-self: flex-start;
+  border-radius: 8px;
 }
 
 .complexity-text {
   font-size: 14px;
   color: white;
-  text-align: left; /* Align text to the left */
+  text-align: left;
 }
 
 .complexity-badge {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 60px;
   height: 40px;
-  margin-top: 5px; /* Add margin from the complexity bar */
+  margin-top: 5px;
   margin-right: 15px;
-  margin-bottom: 10px;;
+  margin-bottom: 10px;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   color: white;
-}
-.badge-text {
-  font-size: 10px; /* Adjust the font size */
-  margin-bottom: 3px; /* Add space between text and arrow */
 }
 
 .powers-container {
@@ -145,34 +124,34 @@
   bottom: 0;
   right: 0;
   display: flex;
-  flex-direction: row; /* Change to row layout */
-  justify-content: flex-end; /* Align the items to the right */
-  align-items: flex-end; /* Align the items at the bottom of the container */
-  padding: 5px; /* Add padding for spacing */
-  background-color: rgba(0, 0, 0, .6); /* Semi-transparent background color */
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .power-bar-container {
   display: flex;
-  flex-direction: column; /* Vertical layout */
-  align-items: center; /* Align items at the center horizontally */
-  margin-left: 10px; /* Add margin between bars */
-  height: 100%; /* Set the height of the container to 100% */
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  height: 100%;
   padding-left: 10px;
 }
 
 .power-bar-label {
-  font-size: 12px; /* Adjust font size */
-  margin-top: 5px; /* Add space below the label */
+  font-size: 12px;
+  margin-top: 5px;
   color: white;
-  font-weight: bold; /* Add font weight for boldness */
+  font-weight: bold;
   z-index: 10;
 }
 
 .power-bar {
-  width: 35px; /* Fixed width for bars */
-  background-color: teal; /* Default bar color */
+  width: 35px;
+  background-color: teal;
 }
 
 .power-bar.offense {
@@ -192,22 +171,20 @@
 }
 
 .power-bar.utility {
-  background-color: #8B0000; /* Burnt Umbra color */
+  background-color: #8B0000;
 }
 
 .power-bar.negative {
-  height: 15px; /* Set a small height */
-  position: absolute; /* Position it absolutely */
+  height: 15px;
+  position: absolute;
   z-index: 9;
 }
 
 .complexity-badge-container {
   display: flex;
-  justify-content: flex-end; /* Align to the right edge */
-  margin-top: 5px; /* Add margin from the complexity bar */
+  justify-content: flex-end;
+  margin-top: 5px;
 }
-
-
 
 .up {
   background-color: red;
@@ -220,5 +197,4 @@
 .equal {
   background-color: yellow;
   color: black;
-
 }
