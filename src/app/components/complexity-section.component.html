@@ -1,0 +1,16 @@
+<div class="complexity-container">
+    <div class="complexity-bar-container">
+        <div class="complexity-label">
+            <b>Complexity:</b>
+          </div>
+          <div class="complexity-bar" [style.--complexity-width.%]="getComplexityWidth(complexity)">
+            <span class="complexity-text">{{ complexity }}</span>
+          </div>
+    </div>
+    <div class="complexity-badge-container" *ngIf="complexityChange !== undefined">
+        <div class="complexity-badge" [ngClass]="getComplexityBadgeClass(complexityChange)">
+            <div class="badge-text">Complexity</div>
+            <b>{{ getComplexityBadgeText(complexityChange) }}</b>
+          </div>
+      </div>
+  </div>

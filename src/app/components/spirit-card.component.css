@@ -9,192 +9,69 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  max-width: 600px;
+  max-width: 600px; /* Set a max width for the card */
   min-width: 350px;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  margin: 0 auto; /* Center the card horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
+  border-radius: 8px; /* Add rounded corners */
+
+}
+
+
+.spirit-content {
+  z-index: 1; /* Ensure the text is above the overlay */
 }
 
 .spirit-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  position: relative;
-  height: 40px;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust alignment */
+    flex-wrap: wrap; /* Allow header content to wrap on smaller screens */
+    position: relative; /* Add this line to enable positioning of the icon */
+    height: 40px;
+    /* Add this line to ensure space between the icon and name */
+    gap: 10px;
 }
 
 .spirit-name {
   flex: 1;
-  width: 100%;
+  width: 100%; /* Expand to full width */
   font-weight: bolder;
   font-size: 18px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
+}
+.expansion-icon {
+  /* Existing styles */
+  font-size: 1.5rem; /* Adjust the font size as needed */
 }
 
 .expansion-icon {
-  font-size: 1.5rem;
+  position: relative; /* Change to relative positioning */
+  max-height: 30px; /* Set a maximum height for the icon */
 }
 
 .spirit-image {
+  /* Add these lines for image scaling */
   position: relative;
   width: 100%;
   overflow: hidden;
   display: flex;
-  max-height: 300px;
+  max-height: 300px; /* Set a maximum height for the image */
   object-fit: cover;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-}
+  border-radius: 8px; /* Add rounded corners */
 
+}
 .spirit-image img {
+  /* Add this line to ensure the image scales correctly */
   max-width: 100%;
   height: auto;
 }
 
-.complexity-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  width: 330px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
-}
 
-.complexity-bar-container {
-  margin-top: 10px;
-  margin-left: 10px;
-  display: flex;
-  width: 100%;
-}
 
-.complexity-label {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 7px 10px;
-  font-size: 14px;
-  font-weight: bold;
-  color: black;
-  align-self: flex-start;
-  border-radius: 8px;
-}
 
-.complexity-bar {
-  background-color: red;
-  height: 30px;
-  width: calc((var(--complexity-width, 25%) + 10px));
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  align-self: flex-start;
-  border-radius: 8px;
-}
 
-.complexity-text {
-  font-size: 14px;
-  color: white;
-  text-align: left;
-}
-
-.complexity-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 40px;
-  margin-top: 5px;
-  margin-right: 15px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-}
-
-.powers-container {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.power-bar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 10px;
-  height: 100%;
-  padding-left: 10px;
-}
-
-.power-bar-label {
-  font-size: 12px;
-  margin-top: 5px;
-  color: white;
-  font-weight: bold;
-  z-index: 10;
-}
-
-.power-bar {
-  width: 35px;
-  background-color: teal;
-}
-
-.power-bar.offense {
-  background-color: teal;
-}
-
-.power-bar.control {
-  background-color: green;
-}
-
-.power-bar.fear {
-  background-color: purple;
-}
-
-.power-bar.defense {
-  background-color: orange;
-}
-
-.power-bar.utility {
-  background-color: #8B0000;
-}
-
-.power-bar.negative {
-  height: 15px;
-  position: absolute;
-  z-index: 9;
-}
-
-.complexity-badge-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 5px;
-}
-
-.up {
-  background-color: red;
-}
-
-.down {
-  background-color: green;
-}
-
-.equal {
-  background-color: yellow;
-  color: black;
-}

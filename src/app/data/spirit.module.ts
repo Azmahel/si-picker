@@ -1,18 +1,20 @@
 
 export interface Spirit {
-  name: string
-  complexity: Complexity
-  expansion: Expansion
-  powers : {
-    offense: number,
-    control: number,
-    fear: number,
-    defense: number,
-    utility: number
-  }
-  aspects: Aspect[]
+  name: string,
+  complexity: Complexity,
+  expansion: Expansion,
+  powers : Powers,
+  aspects: Aspect[],
 }
 
+
+export interface Powers {
+  offense: number,
+  control: number,
+  fear: number,
+  defense: number,
+  utility: number,
+}
 
 export interface Aspect {
   name: string,

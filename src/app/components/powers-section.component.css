@@ -1,0 +1,60 @@
+.powers-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row; /* Change to row layout */
+    justify-content: flex-end; /* Align the items to the right */
+    align-items: flex-end; /* Align the items at the bottom of the container */
+    padding: 5px; /* Add padding for spacing */
+    background-color: rgba(0, 0, 0, .6); /* Semi-transparent background color */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .power-bar-container {
+    display: flex;
+    flex-direction: column; /* Vertical layout */
+    align-items: center; /* Align items at the center horizontally */
+    margin-left: 10px; /* Add margin between bars */
+    height: 100%; /* Set the height of the container to 100% */
+    padding-left: 10px;
+  }
+  
+  .power-bar-label {
+    font-size: 12px; /* Adjust font size */
+    margin-top: 5px; /* Add space below the label */
+    color: white;
+    font-weight: bold; /* Add font weight for boldness */
+    z-index: 10;
+  }
+  
+  .power-bar {
+    width: 35px; /* Fixed width for bars */
+    background-color: teal; /* Default bar color */
+  }
+  
+  .power-bar.offense {
+    background-color: teal;
+  }
+  
+  .power-bar.control {
+    background-color: green;
+  }
+  
+  .power-bar.fear {
+    background-color: purple;
+  }
+  
+  .power-bar.defense {
+    background-color: orange;
+  }
+  
+  .power-bar.utility {
+    background-color: #8B0000; /* Burnt Umbra color */
+  }
+  
+  .power-bar.negative {
+    height: 15px; /* Set a small height */
+    position: absolute; /* Position it absolutely */
+    z-index: 9;
+  }

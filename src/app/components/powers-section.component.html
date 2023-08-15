@@ -1,0 +1,22 @@
+<div class="powers-container">
+    <div class="power-bar-container">
+      <div class="power-bar offense" [style.height.px]="powers.offense * 15"  [ngClass]="{ negative: powers.offense === -1 }"></div>
+      <div class="power-bar-label">Offense</div>
+    </div>
+    <div class="power-bar-container">
+      <div class="power-bar control" [style.height.px]="powers.control * 15" [ngClass]="{ negative: powers.control === -1 }"></div>
+      <div class="power-bar-label">Control</div>
+    </div>
+    <div class="power-bar-container">
+      <div class="power-bar fear" [style.height.px]="powers.fear * 15" [ngClass]="{ negative: powers.fear === -1 }"></div>
+      <div class="power-bar-label">Fear</div>
+    </div>
+    <div class="power-bar-container">
+      <div class="power-bar defense" [style.height.px]="powers.defense * 15" [ngClass]="{ negative: powers.defense === -1 }"></div>
+      <div class="power-bar-label">Defense</div>
+    </div>
+    <div class="power-bar-container">
+      <div class="power-bar utility" [style.height.px]="powers.utility * 15"  [ngClass]="{ negative: powers.utility === -1 }"></div>
+      <div class="power-bar-label">Utility</div>
+    </div>
+  </div>
