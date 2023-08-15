@@ -1,8 +1,8 @@
 {
   "name": "Spirit Picker",
   "short_name": "sipicker",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "a27d4e",
+  "background_color": "a27d4e",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
