@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1692131064257,
+  "timestamp": 1692131242549,
   "index": "/si-picker/index.html",
   "assetGroups": [
     {
@@ -23,7 +23,7 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "cacheQueryOptions": {
         "ignoreVary": true
