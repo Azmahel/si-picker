@@ -29,4 +29,8 @@ export class SpiritCardComponent implements OnInit {
   getExpansion(): Expansion {
     return this.aspect ?  this.aspect.expansion : this.spirit.expansion;
   }
+
+  expandSingle() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

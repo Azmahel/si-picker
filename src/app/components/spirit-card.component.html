@@ -1,5 +1,5 @@
 <div class="spirit-card">
-    <div class="spirit-header">
+    <div class="spirit-header" (click)="expandSingle()">
       <div class="expansion-icon" >
         <img *ngIf="getExpansion() !== expansion.BASE" class ="expansion-icon" [src]="'assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
       </div>
