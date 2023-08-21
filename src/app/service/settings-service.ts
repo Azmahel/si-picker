@@ -10,6 +10,7 @@ export class SettingsService {
     selectedComplexities: this.createInitialSelectionMap(Object.values(Complexity)),
     highlightNewContent: true,
     requiredComplexities: {},
+    cardsExpanded: false,
   };
 
   private settingsKey = 'spiritCardSettings';
@@ -42,4 +43,5 @@ export interface Settings {
   selectedComplexities: { [key: string]: boolean };
   highlightNewContent: boolean
   requiredComplexities: { [key: string]: boolean };
+  cardsExpanded: boolean
 }

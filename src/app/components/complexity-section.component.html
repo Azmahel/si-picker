@@ -10,7 +10,7 @@
     <div class="complexity-badge-container" *ngIf="complexityChange !== undefined">
         <div class="complexity-badge" [ngClass]="getComplexityBadgeClass(complexityChange)">
             <div class="badge-text">Complexity</div>
-            <b>{{ getComplexityBadgeText(complexityChange) }}</b>
+            <i class="{{complexityChange == ComplexityChange.UP ? 'fa-solid fa-arrow-up' : (complexityChange == ComplexityChange.DOWN ? 'fa-solid fa-arrow-down': 'fa-solid fa-equals' )}}"></i>
           </div>
       </div>
   </div>

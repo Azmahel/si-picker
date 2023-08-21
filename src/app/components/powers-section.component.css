@@ -1,7 +1,4 @@
 .powers-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     display: flex;
     flex-direction: row; /* Change to row layout */
     justify-content: flex-end; /* Align the items to the right */

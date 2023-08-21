@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Aspect, Complexity, Expansion, Spirit, spirits } from '../data/spirit.module'; // Import your spirit interface
-import { SettingsService } from '../service/settings-service';
+import { Settings, SettingsService } from '../service/settings-service';
 import { compileClassMetadata } from '@angular/compiler';
 
 @Component({
@@ -13,9 +13,11 @@ export class GainSpiritComponent {
   selectedSpirits: { spirit: Spirit; aspect?: Aspect }[] = [];
   selectedExpansions: { [key: string]: boolean} = {};
   selectedComplexities: { [key: string]: boolean} = {};
-  areCardsCollapsed: boolean = true;
+  settings: Settings;
   
-  constructor(private settingsService: SettingsService) {}
+  constructor(private settingsService: SettingsService) {
+    this.settings = settingsService.settings;
+  }
 
 
   getRandomSelection(): void {
@@ -103,6 +105,15 @@ export class GainSpiritComponent {
   }
 
   toggleCardCollapse() {
-    this.areCardsCollapsed = !this.areCardsCollapsed;
+    this.settings.cardsExpanded = !this.settings.cardsExpanded;
+    this.settingsService.saveSettings();
+  }
+
+  clearCards() {
+    this.selectedSpirits = [];
+  }
+
+  showAllCards() { 
+    this.selectedSpirits = spirits.flatMap((s) => { return [{spirit: s, aspect: undefined as (Aspect | undefined) }].concat(s.aspects.map((a) => { return { spirit: s, aspect: a as (Aspect | undefined)} })) } );
   }
 }

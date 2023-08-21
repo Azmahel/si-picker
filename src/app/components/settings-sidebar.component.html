@@ -1,8 +1,9 @@
-<button class="settings-toggle" (click)="toggleSettings()">
-    <i class="fas fa-cog"></i> <!-- Font Awesome gear icon -->
-  </button>
+
   
   <div class="settings-sidebar" [class.active]="settingsActive">
+    <button class="settings-toggle" (click)="toggleSettings()" [class.active]="settingsActive">
+      <i class="fas fa-cog"></i> <!-- Font Awesome gear icon -->
+    </button>
     <div class="filter-option">
         <label class="toggle-container">
           <input type="checkbox" [checked]="settings.highlightNewContent" (change)="onHighlightChange($event)">

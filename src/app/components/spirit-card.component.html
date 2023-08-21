@@ -1,16 +1,16 @@
 <div class="spirit-card">
     <div class="spirit-header">
-      <div class="expansion-icon" *ngIf="getExpansion() !== expansion.BASE">
-        <img class ="expansion-icon" [src]="'assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
+      <div class="expansion-icon" >
+        <img *ngIf="getExpansion() !== expansion.BASE" class ="expansion-icon" [src]="'assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
       </div>
 
       <div class="spirit-name">{{ spirit.name }} {{ aspect ? '(' + aspect.name + ')' : '' }}</div>
     </div>
     <div class="spirit-image" *ngIf="!isCollapsed">
       <img [src]="imageUrl" alt="Spirit Image">
-      
-      <app-complexity-section [complexity]="spirit.complexity" [complexityChange]="aspect? aspect.complexityChange : undefined "></app-complexity-section>
-      <app-powers-section [powers]="spirit.powers"></app-powers-section>
+      <app-powers-section class="powers" [powers]="spirit.powers"></app-powers-section>
+      <app-complexity-section class="complexity" [complexity]="spirit.complexity" [complexityChange]="aspect? aspect.complexityChange : undefined "></app-complexity-section>
+     
     </div>
 
   </div>

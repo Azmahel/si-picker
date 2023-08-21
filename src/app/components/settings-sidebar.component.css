@@ -1,14 +1,18 @@
 .settings-toggle {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 330px;
     background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: right 0.3s ease-in-out;
     z-index: 1000;
+  }
+  .settings-toggle.active {
+    right: 30px;
   }
   
   /* Styles for the settings sidebar */

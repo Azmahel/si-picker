@@ -9,6 +9,7 @@ import { Complexity, ComplexityChange } from '../data/spirit.module';
 export class ComplexitySectionComponent {
   @Input() complexity: Complexity = Complexity.LOW;
   @Input() complexityChange: ComplexityChange | undefined; 
+  ComplexityChange = ComplexityChange;
 
   getComplexityWidth(complexity: Complexity): number {
     if (complexity === Complexity.VERY_HIGH) {

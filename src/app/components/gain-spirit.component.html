@@ -1,14 +1,22 @@
 <app-settings-sidebar>
 </app-settings-sidebar>
-<button (click)="getRandomSelection()">Gain a Spirit</button>
-<div class="toggle-cards-button">
-  <button (click)="toggleCardCollapse()">{{areCardsCollapsed? "+" : "-"}}</button>
+<button class="gain-button" (click)="getRandomSelection()">Gain a Spirit</button>
+<div class="cards-options">
+  <div class="cards-option">
+  <button (click)="toggleCardCollapse()">{{settings.cardsExpanded ? "+" : "-"}}</button>
+</div>
+<div class="cards-option">
+  <button (click)="clearCards()"><i class="fas fa-trash"></i> </button>
+</div>
+<div class="cards-option">
+  <button (click)="showAllCards()" style="display: none;" ><i class="fas fa-star"></i> </button>
+</div>
 </div>
 
 
 
 <div class="spirit-grid">
   <div *ngFor="let selection of selectedSpirits" class="spirit-card">
-    <app-spirit-card [spirit]="selection.spirit" [aspect]="selection.aspect" [isCollapsed]="areCardsCollapsed"></app-spirit-card>
+    <app-spirit-card [spirit]="selection.spirit" [aspect]="selection.aspect" [isCollapsed]="settings.cardsExpanded"></app-spirit-card>
   </div>
 </div>
