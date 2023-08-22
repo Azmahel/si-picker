@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Powers, spirits } from '../data/spirit.module';
+import { Powers, spirits } from '../../../data/spirit.module';
 
 @Component({
   selector: 'app-powers-section',

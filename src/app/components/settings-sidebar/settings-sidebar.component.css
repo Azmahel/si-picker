@@ -1,0 +1,42 @@
+.settings-toggle {
+    position: absolute;
+    top: 20px;
+    right: 370px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .settings-full-refresh {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .settings-toggle.active {
+    right: 20px;
+  }
+  
+  /* Styles for the settings sidebar */
+  .settings-sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Start hidden off-screen */
+    width: 350px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 900;
+    padding-top: 50px; /* Add top padding */
+
+  }
+  
+  .settings-sidebar.active {
+    right: 0; /* Show sidebar when the .active class is applied */
+  }
+  
+ 
+  .filter-option {
+    display: flex;
+    align-items: center;
+  }
+  

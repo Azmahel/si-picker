@@ -1,0 +1,21 @@
+.power-bounds {
+  display: flex;
+  height: 30px;
+}
+.bounds-value {
+  background-color: lightgray;
+  padding: 5px;
+  margin-left: 15px;
+  border-radius: 8px;
+  height: 20px;
+  align-self: center;
+}
+.bounds-label {
+  align-self: center;
+  font-weight: bold;
+  width: 80px;
+}
+.slider {
+  height: 30px;
+  width:50px;
+}

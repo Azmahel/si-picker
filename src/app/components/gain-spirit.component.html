@@ -1,19 +1,17 @@
-<app-settings-sidebar>
-</app-settings-sidebar>
-<button class="gain-button" (click)="getRandomSelection()">Gain a Spirit</button>
+<app-settings-sidebar></app-settings-sidebar>
+<button class="gain-button" mat-raised-button color="primary" (click)="getRandomSelection()">Gain a Spirit</button>
 <div class="cards-options">
-  <div class="cards-option">
-  <button (click)="toggleCardCollapse()">{{settings.cardsExpanded ? "+" : "-"}}</button>
+  <button mat-mini-fab color="primary" (click)="toggleCardCollapse()" [matTooltip]="settings.cardsExpanded ? 'expand spirits' : 'collapse spirits'" matTooltipPosition="after">{{settings.cardsExpanded ? "+" : "-"}}</button>
+<div class="cards-option">
+  <button mat-mini-fab color="primary" (click)="clearCards()" matTooltip="clear spirits" matTooltipPosition="after"><i class="fas fa-trash"></i> </button>
 </div>
 <div class="cards-option">
-  <button (click)="clearCards()"><i class="fas fa-trash"></i> </button>
+  <button mat-mini-fab color="primary" (click)="showAllCards()"  matTooltip="show available spirits" matTooltipPosition="after"><i class="fas fa-star"></i> </button>
 </div>
 </div>
-
-
 
 <div class="spirit-grid">
   <div *ngFor="let selection of selectedSpirits" class="spirit-card">
-    <app-spirit-card [spirit]="selection.spirit" [aspect]="selection.aspect" [isCollapsed]="settings.cardsExpanded"></app-spirit-card>
+    <app-spirit-card class="spirit" [spirit]="selection.spirit" [aspect]="selection.aspect" [isCollapsed]="settings.cardsExpanded"></app-spirit-card>
   </div>
 </div>

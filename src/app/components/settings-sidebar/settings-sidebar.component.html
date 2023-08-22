@@ -1,0 +1,52 @@
+
+  
+<div class="settings-sidebar" [class.active]="settingsActive">
+  <button class="settings-toggle"  mat-mini-fab color="primary" (click)="toggleSettings()" [class.active]="settingsActive" matTooltip="filters and settings" matTooltipPosition="before">
+    <i class="fas fa-filter"></i> 
+  </button>
+ 
+  <div class="filter-option" style="margin-left: 20px;" matTooltip="Ensure at least one Spirit or Aspect is from Horizons or Nature Incarnate" matTooltipPosition="below">
+    <app-settings-toggle [value]="settings.highlightNewContent" (onToggle)="onHighlightChange($event)" name="Highlight new Content" [single]="true"></app-settings-toggle>
+  </div>
+  <div class="filter-option" style="margin-left: 20px;">
+    <mat-form-field class="example-full-width">
+      <mat-label>Number of Spirits gained</mat-label>
+      <input matInput type="number"  max="12" min="1" maxlength="5" placeholder="4" [(ngModel)]="settings.optionCount" (change)="onCountChange()">
+    </mat-form-field>
+  </div>
+  <mat-accordion class="example-headers-align" multi>
+    <app-settings-section name= "Expansions" (refresh)="reset('expansions')" tooltip="Filter Spirits and Aspects based on owned Content">
+      <div class="filter-option" *ngFor="let expansion of expansions">
+        <app-settings-toggle [value]="settings.selectedExpansions[expansion]" (onToggle)="onExpansionChange(expansion, $event)" [name]="messages.expansionNames[expansion]"></app-settings-toggle>
+      </div>
+    </app-settings-section>
+    <app-settings-section name="Complexities" (refresh)="reset('complexities')" tooltip="Filter Spirits based on their Complexity">
+      <div class="filter-option" *ngFor="let complexity of complexities">
+        <app-settings-toggle [value]="settings.selectedComplexities[complexity]" (onToggle)="onComplexityChange(complexity, $event)" [name]="complexity"></app-settings-toggle>
+      </div> 
+    </app-settings-section>
+    <app-settings-section name="Powers" (refresh)="reset('powers')" tooltip="Filter Spirits based on their power profile">
+      <div class="filter-option" *ngFor="let power of powers">
+        <app-power-bounds 
+          [label]="power.name" 
+          [minValue]="power.min" 
+          [maxValue]="power.max" 
+          [currentMin]="power.currentMin" 
+          [currentMax]="power.currentMax" 
+          (minChange)=" onPowerMinValueChange(power.name, $event)"
+          (maxChange)=" onPowerMaxValueChange(power.name, $event)"
+        >
+        </app-power-bounds>
+      </div>
+    </app-settings-section>
+    <app-settings-section name= "Required Complexities" (refresh)="reset('requiredComplexities')" tooltip="Ensure at least one Spirit is of each selected Complexity" >
+      <div class="filter-option" *ngFor="let complexity of complexities">
+        <app-settings-toggle [value]="settings.requiredComplexities[complexity]" (onToggle)="onRequiredComplexityChange(complexity, $event)" [name]="complexity"></app-settings-toggle>
+      </div>
+    </app-settings-section>
+  </mat-accordion>
+  <button class="settings-full-refresh"  mat-fab extended color="primary" (click)="reset('all')" [class.active]="settingsActive" >
+    <i class="fas fa-refresh"></i> Reset all
+  </button>
+</div>
+

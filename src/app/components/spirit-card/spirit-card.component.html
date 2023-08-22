@@ -1,6 +1,6 @@
 <div class="spirit-card">
     <div class="spirit-header" (click)="expandSingle()">
-      <div class="expansion-icon" >
+      <div class="expansion-icon" [matTooltip]="messages.expansionNames[getExpansion()]">
         <img *ngIf="getExpansion() !== expansion.BASE" class ="expansion-icon" [src]="'assets/expansion-icons/' + getExpansion() + '.png'" alt="Expansion Icon">
       </div>
 
@@ -10,7 +10,5 @@
       <img [src]="imageUrl" alt="Spirit Image">
       <app-powers-section class="powers" [powers]="spirit.powers"></app-powers-section>
       <app-complexity-section class="complexity" [complexity]="spirit.complexity" [complexityChange]="aspect? aspect.complexityChange : undefined "></app-complexity-section>
-     
     </div>
-
   </div>

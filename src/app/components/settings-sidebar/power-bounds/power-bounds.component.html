@@ -1,0 +1,8 @@
+<div class= power-bounds>
+  <div class="bounds-label">{{label}}</div>
+  <mat-slider class="slider" [min]="minValue" [max]="maxValue" step="1" showTickMarks="true" showTickMarks discrete>
+    <input matSliderStartThumb [value] ="currentMin" (valueChange)="newMin($event)">
+    <input matSliderEndThumb  [value] ="currentMax" (valueChange)="newMax($event)">
+  </mat-slider>
+<div class="bounds-value">{{ currentMin }} - {{ currentMax }}</div>
+</div>

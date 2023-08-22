@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Spirit, Aspect, spirits, Expansion } from '../data/spirit.module'; // Adjust the path as needed
-import { SpiritImageService } from '../service/spirit-image-service';
+import { messages } from 'src/app/data/messages';
+import { Aspect, Expansion, Spirit, spirits } from 'src/app/data/spirit.module';
+import { SpiritImageService } from 'src/app/service/spirit-image-service';
 
 @Component({
   selector: 'app-spirit-card',
@@ -13,6 +14,7 @@ export class SpiritCardComponent implements OnInit {
   @Input() isCollapsed: boolean = false;
   expansion = Expansion;
   imageUrl = '';
+  messages = messages;
 
   constructor(private spiritService: SpiritImageService) {}
 

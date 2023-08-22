@@ -10,16 +10,12 @@
   background-position: center;
   position: relative;
   max-width: 600px; /* Set a max width for the card */
+  width: 100%;
   min-width: 350px;
   margin: 0 auto; /* Center the card horizontally */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
   border-radius: 8px; /* Add rounded corners */
 
-}
-
-
-.spirit-content {
-  z-index: 1; /* Ensure the text is above the overlay */
 }
 
 .spirit-header {

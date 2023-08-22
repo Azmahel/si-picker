@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Complexity, ComplexityChange } from '../data/spirit.module';
+import { Complexity, ComplexityChange } from '../../../data/spirit.module';
 
 @Component({
   selector: 'app-complexity-section',

@@ -1,0 +1,14 @@
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header [matTooltip]="tooltip" matTooltipPosition="below">
+    <mat-panel-title>
+      <h4>
+        {{name}}
+      </h4>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ng-content></ng-content>
+  <button  mat-icon-button color="primary" (click)="reset($event)" matTooltip="Reset to defaults" matTooltipPosition="after">
+    <i class="fas fa-refresh"></i> 
+</button>
+</mat-expansion-panel>

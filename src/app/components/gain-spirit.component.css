@@ -1,51 +1,47 @@
 .spirit-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* Use auto-fit */
-
+    margin-top: 50px;;
     gap: 20px;
   }
   
   .spirit-card {
-    display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
+    padding-right:30px;
     min-width: 360px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  button {
-    display: block;
+  .gain-button {
+    display: flex;
     margin: 0 auto; /* Center the button horizontally */
     font-size: 16px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
     font-weight: bold;
-    background-color: #3498db; /* Blue background color */
-    color: white; /* White text color */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 10px 20px;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  .gain-button {
-    margin-top: 20px;
+    margin-top: 60px;
   }
   
-  button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
-  }
 
   .cards-options {
     display: flex;
     padding: auto;
-    position: relative;
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    margin-top: 20px;
   }
   .cards-option {
+    margin-top:5px;
     position: relative;
-    padding-left: 15px;
   }
 
   
