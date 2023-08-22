@@ -10,13 +10,12 @@ import { SettingsToggleComponent } from './settings-toggle/settings-toggle.compo
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [SettingsSidebarComponent, PowerBoundsComponent, SettingsSectionComponent, SettingsToggleComponent],
-  imports: [CommonModule, FormsModule, MatSliderModule, BrowserAnimationsModule, MatExpansionModule, MatSlideToggleModule, MatTooltipModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, MatSliderModule, BrowserAnimationsModule, MatExpansionModule, MatSlideToggleModule, MatTooltipModule, MatButtonModule],
   exports: [SettingsSidebarComponent]
 })
 export class SettingsSidebarModule { }

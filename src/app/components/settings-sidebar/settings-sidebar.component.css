@@ -14,6 +14,10 @@
   .settings-toggle.active {
     right: 20px;
   }
+
+  .count-label{
+    font-weight: bold;
+  }
   
   /* Styles for the settings sidebar */
   .settings-sidebar {
