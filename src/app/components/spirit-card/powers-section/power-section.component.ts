@@ -8,4 +8,6 @@ import { Powers, spirits } from '../../../data/spirit.module';
 })
 export class PowersSectionComponent {
   @Input() powers: Powers = spirits[0].powers;
+  @Input() isMalleable: boolean = false;
+  @Input() hint: string ='';
 }

@@ -1,22 +1,35 @@
 <div class="powers-container">
+  <div class = "powers-hint" *ngIf="hint">{{hint}}</div>
+  <div class="power-bars">
     <div class="power-bar-container">
-      <div class="power-bar offense" [style.height.px]="powers.offense * 15"  [ngClass]="{ negative: powers.offense <0 }"></div>
+      <div class="power-bar offense" [style.height.px]="powers.offense * 15"  [ngClass]="{ negative: powers.offense <0 }">
+        <div class="power-bar-label power-bar-overlay" *ngIf="isMalleable"> ? </div>
+      </div>
       <div class="power-bar-label">Offense</div>
     </div>
     <div class="power-bar-container">
-      <div class="power-bar control" [style.height.px]="powers.control * 15" [ngClass]="{ negative: powers.control <0 }"></div>
+      <div class="power-bar control" [style.height.px]="powers.control * 15" [ngClass]="{ negative: powers.control <0 }">
+        <div class="power-bar-label power-bar-overlay" *ngIf="isMalleable"> ? </div>
+      </div>
       <div class="power-bar-label">Control</div>
     </div>
     <div class="power-bar-container">
-      <div class="power-bar fear" [style.height.px]="powers.fear * 15" [ngClass]="{ negative: powers.fear < 0 }"></div>
+      <div class="power-bar fear" [style.height.px]="powers.fear * 15" [ngClass]="{ negative: powers.fear < 0 }">
+        <div class="power-bar-label power-bar-overlay" *ngIf="isMalleable"> ? </div>
+      </div>
       <div class="power-bar-label">Fear</div>
     </div>
     <div class="power-bar-container">
-      <div class="power-bar defense" [style.height.px]="powers.defense * 15" [ngClass]="{ negative: powers.defense < 0 }"></div>
+      <div class="power-bar defense" [style.height.px]="powers.defense * 15" [ngClass]="{ negative: powers.defense < 0 }">
+        <div class="power-bar-label power-bar-overlay" *ngIf="isMalleable"> ? </div>
+      </div>
       <div class="power-bar-label">Defense</div>
     </div>
     <div class="power-bar-container">
-      <div class="power-bar utility" [style.height.px]="powers.utility * 15"  [ngClass]="{ negative: powers.utility < 0 }"></div>
+      <div class="power-bar utility" [style.height.px]="powers.utility * 15"  [ngClass]="{ negative: powers.utility < 0 }">
+        <div class="power-bar-label power-bar-overlay" *ngIf="isMalleable"> ? </div>
+      </div>
       <div class="power-bar-label">Utility</div>
     </div>
+  </div>
   </div>

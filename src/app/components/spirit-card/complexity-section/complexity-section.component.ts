@@ -8,20 +8,9 @@ import { Complexity, ComplexityChange } from '../../../data/spirit.module';
 })
 export class ComplexitySectionComponent {
   @Input() complexity: Complexity = Complexity.LOW;
+  @Input() complexityValue: number = .5;
   @Input() complexityChange: ComplexityChange | undefined; 
   ComplexityChange = ComplexityChange;
-
-  getComplexityWidth(complexity: Complexity): number {
-    if (complexity === Complexity.VERY_HIGH) {
-      return 55; // Use 33% for about one-third of the card's width
-    } else if (complexity === Complexity.HIGH) {
-      return 55 * 0.75;
-    } else if (complexity === Complexity.MODERATE) {
-      return 55*0.5; // Use 16.5% for proportional width
-    } else {
-      return 55*0.25; // Use 11% for proportional width
-    }
-  }
 
   getComplexityBadgeClass(change: ComplexityChange | undefined): string {
     if (change === ComplexityChange.UP) {
@@ -43,5 +32,16 @@ export class ComplexitySectionComponent {
       return '=';
     }
     return ''; // Return an empty string if no change or unknown value
+  }
+
+  getComplexityClass() : string {
+    if (this.complexityChange === ComplexityChange.UP) {
+      return 'fa-solid fa-arrow-up'
+    } else if (this.complexityChange === ComplexityChange.DOWN) {
+      return 'fa-solid fa-arrow-down';
+    } else if (this.complexityChange === ComplexityChange.EQUAL) {
+      return 'fa-solid fa-equals'
+    }
+    return ''
   }
 }

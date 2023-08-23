@@ -8,7 +8,8 @@
     </div>
     <div class="spirit-image" *ngIf="!isCollapsed">
       <img [src]="imageUrl" alt="Spirit Image">
-      <app-powers-section class="powers" [powers]="spirit.powers"></app-powers-section>
-      <app-complexity-section class="complexity" [complexity]="spirit.complexity" [complexityChange]="aspect? aspect.complexityChange : undefined "></app-complexity-section>
+      <app-powers-section class="powers" [powers]="spirit.powers" [isMalleable]="spirit.isMalleable || false" [hint]="spirit.powersHint || ''"></app-powers-section>
+      
+      <app-complexity-section class="complexity" [complexity]="spirit.complexity" [complexityChange]="aspect ? aspect.complexityChange : undefined" [complexityValue]="spirit.complexityValue" ></app-complexity-section>
     </div>
   </div>

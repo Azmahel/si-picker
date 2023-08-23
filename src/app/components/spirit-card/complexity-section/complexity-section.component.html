@@ -3,14 +3,14 @@
         <div class="complexity-label">
             <b>Complexity:</b>
           </div>
-          <div class="complexity-bar" [style.--complexity-width.%]="getComplexityWidth(complexity)">
+          <div class="complexity-bar" [style.--complexity-width.%]="60 * complexityValue">
             <span class="complexity-text">{{ complexity }}</span>
           </div>
     </div>
-    <div class="complexity-badge-container" *ngIf="complexityChange !== undefined">
+    <div class="complexity-badge-container" *ngIf="complexityChange !== undefined ">
         <div class="complexity-badge" [ngClass]="getComplexityBadgeClass(complexityChange)">
             <div class="badge-text">Complexity</div>
-            <i class="{{complexityChange == ComplexityChange.UP ? 'fa-solid fa-arrow-up' : (complexityChange == ComplexityChange.DOWN ? 'fa-solid fa-arrow-down': 'fa-solid fa-equals' )}}"></i>
+            <i class="{{ getComplexityClass() }}"></i>
           </div>
       </div>
   </div>

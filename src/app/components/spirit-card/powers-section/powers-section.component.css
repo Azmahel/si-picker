@@ -1,11 +1,25 @@
 .powers-container {
     display: flex;
-    flex-direction: row; /* Change to row layout */
-    justify-content: flex-end; /* Align the items to the right */
-    align-items: flex-end; /* Align the items at the bottom of the container */
+    flex-direction: column; /* Change to row layout */
     padding: 5px; /* Add padding for spacing */
     background-color: rgba(0, 0, 0, .6); /* Semi-transparent background color */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    width: 300px;
+  }
+  .power-bars {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; /* Align the items at the bottom of the container */
+    justify-content: flex-end; /* Align the items to the right */
+  }
+
+  .powers-hint {
+    
+    font-size: 14px;
+    flex-wrap: wrap; /* Allow header content to wrap on smaller screens */
+    color: white;
+    text-align: center;
+    white-space: normal;
   }
   
   .power-bar-container {
@@ -24,10 +38,21 @@
     font-weight: bold; /* Add font weight for boldness */
     z-index: 10;
   }
+  .power-bar-overlay {
+    display: flex;
+    align-self: center;
+    top: 40px;
+    font-size: 20px;
+    opacity: 50%;
+  }
   
   .power-bar {
     width: 35px; /* Fixed width for bars */
     background-color: teal; /* Default bar color */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    border: 1px solid white;
   }
   
   .power-bar.offense {
@@ -47,7 +72,7 @@
   }
   
   .power-bar.utility {
-    background-color: #8B0000; /* Burnt Umbra color */
+    background-color: #241402;
   }
   
   .power-bar.negative {

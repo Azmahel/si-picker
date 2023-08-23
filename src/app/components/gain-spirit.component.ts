@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Aspect, Complexity, Expansion, Spirit, spirits } from '../data/spirit.module'; // Import your spirit interface
 import { Settings, SettingsService } from '../service/settings-service';
-import { compileClassMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-gain-spirit',
@@ -9,7 +8,7 @@ import { compileClassMetadata } from '@angular/compiler';
   styleUrls: ['./gain-spirit.component.css'],
 })
 export class GainSpiritComponent {
-  spirits: Spirit[] = spirits // Populate this array with your spirits data
+  spirits: Spirit[] = spirits 
   selectedSpirits: { spirit: Spirit; aspect?: Aspect }[] = [];
   availableSpirits: Spirit[] = spirits;
   settings: Settings;
@@ -18,10 +17,8 @@ export class GainSpiritComponent {
     this.settings = settingsService.settings;
   }
 
-
   getRandomSelection(): void {
     this.settings = this.settingsService.settings;
-    // Filter spirits based on selected expansions and complexities
     this.availableSpirits = this.getAvailableSpirits()
   
     this.selectedSpirits = []
@@ -34,62 +31,48 @@ export class GainSpiritComponent {
 
     const remaining = this.settings.optionCount - this.selectedSpirits.length
     for (let i = 0; i <  remaining ; i++) {
-      if (this.availableSpirits.length === 0) {
-        break; // No more available spirits, stop the loop
+      const randomSpirit =  this.random(this.availableSpirits)
+      if(randomSpirit) {
+        this.selectSpirit( randomSpirit, this.getRandomAspect(randomSpirit))
+      } else {
+        break;
       }
-
-      const randomSpiritIndex = Math.floor(Math.random() *  this.availableSpirits.length);
-      const randomSpirit = this.availableSpirits[randomSpiritIndex];
-
-      this.selectSpirit( randomSpirit, this.getRandomAspect(randomSpirit))
     }
   }
 
   private selectSpirit(spirit: Spirit, aspect: Aspect | undefined) {
     this.selectedSpirits.push({ spirit, aspect });
-      this.availableSpirits.splice(this.availableSpirits.lastIndexOf(spirit), 1); 
+    this.availableSpirits.splice(this.availableSpirits.lastIndexOf(spirit), 1); 
   }
 
   private getRequiredComplexitySpirits() {
     Object.values(Complexity)
       .filter((complexity) => this.settingsService.settings.requiredComplexities[complexity])
       .filter((complexity) => this.selectedSpirits.filter(({ spirit }) => spirit.complexity === complexity).length === 0)
-      .forEach((complexity) => {
-        this.fetchComplexitySpirit(complexity);
-      });
+      .forEach((complexity) => { this.fetchComplexitySpirit(complexity);});
   }
 
   private fetchComplexitySpirit(complexity: Complexity) {
     const complexSpirits = this.availableSpirits.filter(s => s.complexity === complexity);
-    if(complexSpirits.length !== 0) {
-      const randomSpiritIndex = Math.floor(Math.random() * complexSpirits.length);
-      const randomSpirit = complexSpirits[randomSpiritIndex];
+    const randomSpirit = this.random(complexSpirits);
+    if(randomSpirit) {
       this.selectSpirit( randomSpirit, this.getRandomAspect(randomSpirit))
     }
   }
 
   private getRandomAspect(spirit: Spirit): Aspect | undefined {
-    const filteredAspects = this.availableAspects(spirit);
-      const randomAspectIndex = Math.random() < filteredAspects.length / (filteredAspects.length + 1)
-        ? undefined : Math.floor(Math.random() * filteredAspects.length);
-      return randomAspectIndex !== undefined ? filteredAspects[randomAspectIndex] : undefined;
+    const filteredAspects: (Aspect | undefined)[] = this.availableAspects(spirit);
+    return this.random(filteredAspects.concat([undefined]));
   }
 
   private fetchNewContentSpirit( selectedExpansions: { [key: string]: boolean; }) {
-    const newContentSpirits = this.availableSpirits.filter((spirit) => this.isNewContent(spirit.expansion) || spirit.aspects.filter((aspect) => this.isNewContent(aspect.expansion)).length !== 0
-    );
-    if(newContentSpirits.length !== 0) {
-      const randomSpiritIndex = Math.floor(Math.random() * newContentSpirits.length);
-      const randomSpirit = newContentSpirits[randomSpiritIndex];
-      let randomAspect;
-      if (this.isNewContent(randomSpirit.expansion)) {
-        randomAspect = this.getRandomAspect(randomSpirit);
-      } else {
-        const filteredAspects = this.availableAspects(randomSpirit).filter(aspect => this.isNewContent(aspect.expansion));
-        let randomAspectIndex = Math.floor(Math.random() * filteredAspects.length);
-        randomAspect = randomAspectIndex !== undefined ? filteredAspects[randomAspectIndex] : undefined;
-      }
-      this.selectSpirit( randomSpirit, randomAspect)
+    const newContentSpirits = this.availableSpirits.filter((spirit) => this.isNewContent(spirit.expansion) || spirit.aspects.filter((aspect) => this.isNewContent(aspect.expansion)).length !== 0);
+    const randomSpirit = this.random(newContentSpirits);
+    if(randomSpirit) {
+      const filteredAspects = this.isNewContent(randomSpirit.expansion) ? 
+          (this.availableAspects(randomSpirit) as (Aspect | undefined)[]).concat([undefined]) :  
+          this.availableAspects(randomSpirit).filter(aspect => this.isNewContent(aspect.expansion))
+      this.selectSpirit( randomSpirit, this.random(filteredAspects))
     }
   }
 
@@ -105,7 +88,7 @@ export class GainSpiritComponent {
     )
   }
 
-  private availableAspects(spirit: Spirit): Aspect[] {
+  private availableAspects(spirit: Spirit): (Aspect)[] {
     return spirit.aspects.filter((aspect) =>this.settingsService.settings.selectedExpansions[aspect.expansion])
   }
   
@@ -135,6 +118,8 @@ export class GainSpiritComponent {
       return [{spirit: s, aspect: undefined as (Aspect | undefined) }]
       .concat(this.availableAspects(s).map((a) => { return { spirit: s, aspect: a as (Aspect | undefined)} })) } );
   }
+
+  private random<T>(list: T[]) : T | undefined {
+    return list.length === 0 ? undefined : list[ Math.floor(Math.random() * list.length)];
+  }
 }
-
-
