@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { messages } from 'src/app/data/messages';
-import { Aspect, Expansion, Spirit, spirits } from 'src/app/data/spirit.module';
+import { Aspect, Expansion, SpecialityToken, Spirit, Token, spirits } from 'src/app/data/spirit.module';
 import { SpiritImageService } from 'src/app/service/spirit-image-service';
 
 @Component({
@@ -15,6 +15,7 @@ export class SpiritCardComponent implements OnInit {
   expansion = Expansion;
   imageUrl = '';
   messages = messages;
+  Token = Token
 
   constructor(private spiritService: SpiritImageService) {}
 
@@ -34,5 +35,9 @@ export class SpiritCardComponent implements OnInit {
 
   expandSingle() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  getTokens(): (Token | SpecialityToken)[] {
+    return [...(this.spirit.tokens || []).concat(this.aspect?.tokens || []), ...(this.spirit.specialTokens || []).concat(this.aspect?.specialTokens || [])]
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Aspect, Complexity, Expansion, Spirit, spirits } from '../data/spirit.module'; // Import your spirit interface
+import { Aspect, Complexity, Expansion, SpecialityToken, Spirit, Token, incarna, spirits } from '../data/spirit.module'; // Import your spirit interface
 import { Settings, SettingsService } from '../service/settings-service';
 
 @Component({
@@ -33,7 +33,12 @@ export class GainSpiritComponent {
     for (let i = 0; i <  remaining ; i++) {
       const randomSpirit =  this.random(this.availableSpirits)
       if(randomSpirit) {
-        this.selectSpirit( randomSpirit, this.getRandomAspect(randomSpirit))
+        if(this.tokenRequirements(randomSpirit)) {
+          this.selectSpirit( randomSpirit, this.getRandomAspect(randomSpirit))
+        } else {
+          this.selectSpirit( randomSpirit, this.random(this.availableAspects(randomSpirit)))
+        }
+       
       } else {
         break;
       }
@@ -47,7 +52,7 @@ export class GainSpiritComponent {
 
   private getRequiredComplexitySpirits() {
     Object.values(Complexity)
-      .filter((complexity) => this.settingsService.settings.requiredComplexities[complexity])
+      .filter((complexity) => this.settingsService.settings.highlightComplexities[complexity])
       .filter((complexity) => this.selectedSpirits.filter(({ spirit }) => spirit.complexity === complexity).length === 0)
       .forEach((complexity) => { this.fetchComplexitySpirit(complexity);});
   }
@@ -84,12 +89,77 @@ export class GainSpiritComponent {
     return this.spirits.filter((spirit) =>
       this.settingsService.settings.selectedExpansions[spirit.expansion] &&
       this.settingsService.settings.selectedComplexities[spirit.complexity]&&
-      this.powersInBounds(spirit)
+      this.powersInBounds(spirit) && 
+      this.filterAvailableTokens(spirit) &&
+      (this.tokenRequirements(spirit) || this.availableAspects(spirit).length > 0)
     )
   }
 
+  filterAvailableTokens(spirit: Spirit): boolean {
+    return this.filterTokens(spirit.tokens || []) && (!this.hasIncarna(spirit.specialTokens|| []) || this.settingsService.settings.allowIncarna)
+  }
+
+  filterAvailableAspectTokens(aspect: Aspect): boolean {
+    return this.filterTokens(aspect.tokens || []) && (!this.hasIncarna(aspect.specialTokens|| []) || this.settingsService.settings.allowIncarna)
+  }
+
+  filterTokens(tokens: Token[]) {
+    return tokens.filter(t => !this.settingsService.settings.allowedTokens[t]).length === 0
+  }
+
+  tokenRequirements(spirit: Spirit): boolean {
+    if (this.settingsService.settings.requireIncarna) {
+      if (!this.hasIncarna(spirit.specialTokens || [])) {
+        return false;
+      }
+    }
+    const requiredTokens = this.getRequiredTokens();
+    if (requiredTokens.length > 0) {
+      const filteredTokens = (spirit.tokens || []).filter(t => this.settingsService.settings.requiredTokens[t])
+      const spiritHasTokens = this.settingsService.settings.reqiredTokensAny ? filteredTokens.length > 0 : filteredTokens.length === requiredTokens.length;
+      return spiritHasTokens;
+    }
+    return true;
+  }
+
+  private getRequiredTokens(): Token[] {
+    return Object.values(Token).filter(t => this.settingsService.settings.requiredTokens[t])
+  }
+  private hasIncarna(value: SpecialityToken[]) {
+    return value.filter(this.isIncarna).length > 0;
+  }
+
+  private isIncarna(value: SpecialityToken): boolean {
+    return incarna.lastIndexOf(value) !== -1;
+  }
+
   private availableAspects(spirit: Spirit): (Aspect)[] {
-    return spirit.aspects.filter((aspect) =>this.settingsService.settings.selectedExpansions[aspect.expansion])
+    return spirit.aspects.filter((aspect) => 
+      this.settingsService.settings.selectedExpansions[aspect.expansion] &&
+      this.filterAvailableAspectTokens(aspect) &&
+      this.aspectTokenRequirements(spirit, aspect)
+    )
+  }
+
+  private aspectTokenRequirements(spirit: Spirit, aspect: Aspect): boolean {
+    if(this.tokenRequirements(spirit)) {
+      return true;
+    }
+    if(this.settingsService.settings.requireIncarna && !this.hasIncarna(aspect.specialTokens || [])) {
+      return false;
+    }
+    
+    const requiredTokens = this.getRequiredTokens().filter(t => (spirit?.tokens?.lastIndexOf(t) ||-1 ) === -1);
+    for( let token of (aspect.tokens || [] as Token[])) {
+      if(requiredTokens.lastIndexOf(token) !== -1) {
+        if(this.settingsService.settings.reqiredTokensAny) {
+          return true;
+        } else {
+          requiredTokens.splice(requiredTokens.lastIndexOf(token), 1)
+        }
+      }
+    }
+    return requiredTokens.length === 0;
   }
   
   private powersInBounds(spirit: Spirit): boolean {
@@ -115,8 +185,8 @@ export class GainSpiritComponent {
 
   showAllCards() { 
     this.selectedSpirits = this.getAvailableSpirits().flatMap((s) => { 
-      return [{spirit: s, aspect: undefined as (Aspect | undefined) }]
-      .concat(this.availableAspects(s).map((a) => { return { spirit: s, aspect: a as (Aspect | undefined)} })) } );
+      let base = this.tokenRequirements(s) ? [{spirit: s, aspect: undefined as (Aspect | undefined) }] : []
+      return base.concat(this.availableAspects(s).map((a) => { return { spirit: s, aspect: a as (Aspect | undefined)} })) } );
   }
 
   private random<T>(list: T[]) : T | undefined {

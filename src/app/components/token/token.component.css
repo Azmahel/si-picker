@@ -1,0 +1,13 @@
+svg {
+  width: 100%; /* Make the SVG element take the full width of its parent */
+  height: 100%; /* Make the SVG element take the full height of its parent */
+  aspect-ratio: 1; /* Maintain the aspect ratio of the SVG */
+  overflow: hidden;
+  max-width: 30px;
+  max-height:30px;
+}
+
+
+
+
+

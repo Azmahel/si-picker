@@ -43,4 +43,11 @@
     display: flex;
     align-items: center;
   }
+
+  .token {
+    height: 30px;
+    width: 30px;
+    overflow: hidden; /* Ensure SVGs do not overflow their cells */
+
+  }
   

@@ -1,0 +1,9 @@
+<div class = "container" *ngIf="tokens.length !== 0">
+    <div class="header"> Uses </div>
+    <div class="grid">
+        <div class = "grid-item" *ngFor="let token of tokens" >
+            <app-token [token]="token"></app-token>
+        </div>
+    </div>
+</div>
+

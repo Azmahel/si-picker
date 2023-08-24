@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+      <filter id="outline" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+          <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="expanded" />
+          <feFlood flood-color="white" result="outline-color" />
+          <feComposite in="outline-color" in2="expanded" operator="in" result="outline" />
+          <feComposite in="SourceGraphic" in2="outline" operator="over" />
+        </filter>
+  </defs>
+  <image x="5%" y="5%" width="90%" height="90%" [attr.xlink:href]="'assets/tokens/'+ token +'.svg'" filter="url(#outline)" />
+</svg>

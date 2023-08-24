@@ -40,9 +40,29 @@
         </app-power-bounds>
       </div>
     </app-settings-section>
-    <app-settings-section name= "Required Complexities" (refresh)="reset('requiredComplexities')" tooltip="Ensure at least one Spirit is of each selected Complexity" >
+    <app-settings-section name="Allowed Tokens" (refresh)="reset('allowedTokens')" tooltip="Filter Spirits based on their used Tokens">
+      <div class="filter-option" *ngFor="let token of tokens">
+        <app-settings-toggle [value]="settings.allowedTokens[token]" (onToggle)="onAllowedTokenChange(token, $event)" ><app-token class="token" [token]="token"></app-token></app-settings-toggle>
+      </div> 
+      <div class="filter-option">
+        <app-settings-toggle   [value]="settings.allowIncarna" (onToggle)="onAllowIncarnaChange($event)" ><app-token class="token" [token]="incarna"></app-token></app-settings-toggle>
+      </div> 
+    </app-settings-section>
+    <app-settings-section name="Required Tokens" (refresh)="reset('requiredTokens')" tooltip="Limit Selection to Spirits that use any (or all) of the selected Tokens">
+      <mat-radio-group class="radio-group filter-option" color="primary" [(ngModel)]="settings.reqiredTokensAny" (change)="onRequireTokenAnyChange($event.value)">
+        <mat-radio-button class="radio-button" [value]="true"><b>At least one</b></mat-radio-button>
+        <mat-radio-button class="radio-button" [value]="false"><b>All</b></mat-radio-button>
+      </mat-radio-group>
+      <div class="filter-option" *ngFor="let token of tokens">
+        <app-settings-toggle   [value]="settings.requiredTokens[token]" (onToggle)="onRequiredTokenChange(token, $event)" ><app-token class="token" [token]="token"></app-token></app-settings-toggle>
+      </div> 
+      <div class="filter-option">
+        <app-settings-toggle   [value]="settings.requireIncarna" (onToggle)="onRequireIncarnaChange($event)" ><app-token class="token" [token]="incarna"></app-token></app-settings-toggle>
+      </div> 
+    </app-settings-section>
+    <app-settings-section name= "Highlighted Complexities" (refresh)="reset('highlightComplexities')" tooltip="Ensure at least one Spirit is of each selected Complexity" >
       <div class="filter-option" *ngFor="let complexity of complexities">
-        <app-settings-toggle [value]="settings.requiredComplexities[complexity]" (onToggle)="onRequiredComplexityChange(complexity, $event)" [name]="complexity"></app-settings-toggle>
+        <app-settings-toggle [value]="settings.highlightComplexities[complexity]" (onToggle)="onHighlightComplexityChange(complexity, $event)" [name]="complexity"></app-settings-toggle>
       </div>
     </app-settings-section>
   </mat-accordion>

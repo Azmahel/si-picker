@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Complexity, Expansion, Powers, spirits } from '../data/spirit.module';
+import { Complexity, Expansion, Powers, Token, spirits } from '../data/spirit.module';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,13 @@ export class SettingsService {
     return {
       selectedExpansions: this.defaultExpansions(),
       selectedComplexities: this.defaultComplexities(),
+      allowedTokens: this.defaultAllowedTokens(),
+      allowIncarna: true,
+      requiredTokens: this.defaultRequiredTokens(),
+      requireIncarna: false,
+      reqiredTokensAny: true,
       highlightNewContent: true,
-      requiredComplexities: this.defaultRequiredComplexities(),
+      highlightComplexities: this.defaultHighlightComplexities(),
       cardsExpanded: false,
       minPowers: this.defaultMinPowers(),
       maxPowers: this.defaultMaxPowers(),
@@ -33,12 +38,20 @@ export class SettingsService {
     };
   }
 
+  defaultAllowedTokens(): { [key: string]: boolean } {
+    return this.createInitialSelectionMap(Object.values(Token));
+  }
+
+  defaultRequiredTokens(): { [key: string]: boolean }{
+    return {};
+  }
+
   defaultMinPowers(): Powers {
     return this.findLimits((a,b) => (b < a) ? b : a)
   }
 
   defaultMaxPowers(): Powers {
-    return this.findLimits((a,b) => (b > a) ? b : a);
+    return this.findLimits((a,b) => (b > a) ? Math.ceil(b) : a);
   }
 
   private findLimits(comparator: (current: number, other: number) => number) {
@@ -62,7 +75,7 @@ export class SettingsService {
     return this.createInitialSelectionMap(Object.values(Complexity));
   }
 
-  defaultRequiredComplexities(): { [key: string]: boolean } {
+  defaultHighlightComplexities(): { [key: string]: boolean } {
     return {};
   }
 
@@ -83,9 +96,15 @@ export interface Settings {
   selectedExpansions: { [key: string]: boolean };
   selectedComplexities: { [key: string]: boolean };
   highlightNewContent: boolean
-  requiredComplexities: { [key: string]: boolean };
+  highlightComplexities: { [key: string]: boolean };
+  allowedTokens: { [key: string]: boolean };
+  allowIncarna: boolean,
+  requiredTokens: { [key: string]: boolean };
+  requireIncarna: boolean,
+  reqiredTokensAny: boolean;
   cardsExpanded: boolean,
   minPowers: Powers,
   maxPowers: Powers,
   optionCount: number,
+
 }

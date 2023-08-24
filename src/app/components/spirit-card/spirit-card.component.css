@@ -66,11 +66,24 @@
   bottom: 0;
   right: 0;
 }
+
+.tokens {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.section {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
 .spirit-image img {
   /* Add this line to ensure the image scales correctly */
   max-width: 100%;
   height: auto;
 }
+
 
 
 

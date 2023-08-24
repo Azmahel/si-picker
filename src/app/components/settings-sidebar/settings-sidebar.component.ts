@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { messages } from 'src/app/data/messages';
-import { Complexity, Expansion } from 'src/app/data/spirit.module';
+import { Complexity, Expansion, SpecialityToken, Token } from 'src/app/data/spirit.module';
 import { Settings, SettingsService } from 'src/app/service/settings-service';
 
 
@@ -16,6 +16,8 @@ export class SettingsSidebarComponent {
   complexities: Complexity[] = Object.values(Complexity);
   settings: Settings;
   messages = messages;
+  tokens: Token[] = Object.values(Token);
+  incarna = SpecialityToken.INCARNA;
  
   powers: {name: string, min: number, max: number, currentMin: number, currentMax: number}[] = [];
  
@@ -54,8 +56,34 @@ export class SettingsSidebarComponent {
     this.settingsService.saveSettings()
   }
 
-  onRequiredComplexityChange(complexity: string, value: boolean): void {
-    this.settings.requiredComplexities[complexity] = value;
+  onAllowedTokenChange(token: string, value: boolean): void {
+    this.settings.allowedTokens[token] = value;
+    this.settingsService.saveSettings()
+  }
+
+  onAllowIncarnaChange(value: boolean) {
+    this.settings.allowIncarna = value;
+    this.settingsService.saveSettings();
+  }
+
+
+  onRequiredTokenChange(token: string, value: boolean): void {
+    this.settings.requiredTokens[token] = value;
+    this.settingsService.saveSettings()
+  }
+
+  onRequireIncarnaChange(value: boolean) {
+    this.settings.requireIncarna = value;
+    this.settingsService.saveSettings();
+  }
+
+  onRequireTokenAnyChange(value: boolean) {
+    this.settings.reqiredTokensAny = value;
+    this.settingsService.saveSettings();
+  }
+
+  onHighlightComplexityChange(complexity: string, value: boolean): void {
+    this.settings.highlightComplexities[complexity] = value;
     this.settingsService.saveSettings()
   }
 
@@ -125,10 +153,18 @@ export class SettingsSidebarComponent {
         this.settingsService.settings.minPowers = this.settingsService.defaultMinPowers();
         this.settingsService.settings.maxPowers = this.settingsService.defaultMaxPowers();
         break;
-      case "requiredComplexities":
-        this.settingsService.settings.requiredComplexities = this.settingsService.defaultRequiredComplexities();
+      case "highlightComplexities":
+        this.settingsService.settings.highlightComplexities = this.settingsService.defaultHighlightComplexities();
         break;
-    
+      case "allowedTokens":
+        this.settingsService.settings.allowedTokens = this.settingsService.defaultAllowedTokens();
+        this.settingsService.settings.allowIncarna = true;
+        break;
+      case "requiredTokens":
+        this.settingsService.settings.requiredTokens = this.settingsService.defaultRequiredTokens();
+        this.settingsService.settings.requireIncarna = false;
+        this.settingsService.settings.reqiredTokensAny = true;
+        break;
     }
     this.saveSettings()
   }

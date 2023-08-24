@@ -7,7 +7,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
   })
   export class SettingsToggleComponent { 
     @Input() value: boolean = true;
-    @Input() name: string = "Setting";
+    @Input() name: string = '';
+    @Input() image: string = '';
     @Input() single: boolean = false;
     @Output() onToggle: EventEmitter<boolean> = new EventEmitter();
 

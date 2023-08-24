@@ -11,11 +11,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { TokenModule } from '../token/token.module';
 
 
 @NgModule({
   declarations: [SettingsSidebarComponent, PowerBoundsComponent, SettingsSectionComponent, SettingsToggleComponent],
-  imports: [CommonModule, FormsModule, MatSliderModule, BrowserAnimationsModule, MatExpansionModule, MatSlideToggleModule, MatTooltipModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, MatSliderModule, BrowserAnimationsModule, MatExpansionModule, MatSlideToggleModule, MatTooltipModule, MatButtonModule, MatRadioModule, TokenModule],
   exports: [SettingsSidebarComponent]
 })
 export class SettingsSidebarModule { }

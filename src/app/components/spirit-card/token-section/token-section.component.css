@@ -1,0 +1,31 @@
+.container {
+    min-width: 60px;
+    max-width: 90px;
+    max-height: 150px;
+    padding-right: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30px,30px)); /* Use auto-fit */
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 auto;
+}
+.header {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.grid-item {
+    width: 100%; /* Make grid items take the full width of their cell */
+    
+    overflow: hidden; /* Ensure SVGs do not overflow their cells */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 

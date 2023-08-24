@@ -4,10 +4,12 @@ export interface Spirit {
   readonly complexity: Complexity,
   readonly complexityValue: number,
   readonly expansion: Expansion,
-  readonly powers : Powers,
+  readonly powers: Powers,
   readonly aspects: Aspect[],
   readonly isMalleable?: boolean,
   readonly powersHint? : string,
+  readonly tokens?: Token[],
+  readonly specialTokens? : SpecialityToken[],
 }
 
 
@@ -20,11 +22,37 @@ export interface Powers {
 }
 
 export interface Aspect {
-  name: string,
-  complexityChange: ComplexityChange
-  expansion: Expansion
-
+  readonly name: string,
+  readonly complexityChange: ComplexityChange
+  readonly expansion: Expansion
+  readonly tokens?: Token[],
+  readonly specialTokens? : SpecialityToken[],
 }
+
+export enum Token {
+  BADLANDS = "Badlands",
+  BEASTS = 'Beasts',
+  DISEASE = 'Disease',
+  STRIFE = 'Strife',
+  VITALITY = 'Vitality',
+  WILDS = 'Wilds',
+}
+
+export enum SpecialityToken {
+  BREATH_INCARNA = "BreathOfDarkness",
+  DEEPS = 'Deeps',
+  BEHEMOTH_INCARNA = 'EmberEyedBehemoth',
+  DARK = 'EndlessDark',
+  LAIR_INCARNA = 'Lair',
+  LOCUS_INCARNA = 'Locus',
+  QUAKE = 'Quake',
+  ROOTS_INCARNA = 'ToweringRoots',
+  VOICE_INCARNA = 'WanderingVoice',
+  WARRIOR_INCARNA = 'Warrior',
+  INCARNA = 'Incarna',
+}
+
+
 
 export enum Complexity {
   LOW = "Low", MODERATE = "Moderate", HIGH = "High", VERY_HIGH = "Very High"
@@ -42,6 +70,19 @@ export enum Expansion {
   HORIZONS = "HORIZONS", 
   NATURE_INCARNATE = "NATURE_INCARNATE",
 }
+
+export const incarna: SpecialityToken[] = [
+  SpecialityToken.LAIR_INCARNA, 
+  SpecialityToken.LOCUS_INCARNA, 
+  SpecialityToken.ROOTS_INCARNA,
+  SpecialityToken.VOICE_INCARNA,
+  SpecialityToken.BREATH_INCARNA,
+  SpecialityToken.WARRIOR_INCARNA,
+  SpecialityToken.BEHEMOTH_INCARNA,
+]
+
+
+
 
 
 export const spirits : Spirit[] = [
@@ -66,6 +107,7 @@ export const spirits : Spirit[] = [
       name: "Pandemonium",
       complexityChange: ComplexityChange.UP,
       expansion: Expansion.JAGGED_EARTH,
+      tokens: [Token.STRIFE],
     },
     {
       name: "Sparking",
@@ -87,7 +129,7 @@ export const spirits : Spirit[] = [
     offense: 3.5,
     control: 4.5,
     fear: .5,
-    defense: -5,
+    defense: .5,
     utility: 3.5,
   },
   aspects: [
@@ -139,6 +181,7 @@ export const spirits : Spirit[] = [
       name: "Madness",
       complexityChange: ComplexityChange.UP,
       expansion: Expansion.JAGGED_EARTH,
+      tokens: [Token.STRIFE]
     },
     {
       name: "Reach",
@@ -168,6 +211,7 @@ aspects: [
     name: "Nourishing",
     complexityChange: ComplexityChange.UP,
     expansion: Expansion.NATURE_INCARNATE,
+    tokens: [Token.VITALITY],
   },
   {
     name: "Resilience",
@@ -197,6 +241,7 @@ aspects: [
       name: "Tangles",
       complexityChange: ComplexityChange.UP,
       expansion: Expansion.NATURE_INCARNATE,
+      tokens: [Token.WILDS],
     },
   ],
 },
@@ -221,6 +266,7 @@ aspects: [
       name: "Warrior",
       complexityChange: ComplexityChange.UP,
       expansion: Expansion.NATURE_INCARNATE,
+      specialTokens: [SpecialityToken.WARRIOR_INCARNA],
     },
   ],
 },
@@ -264,6 +310,7 @@ aspects: [
         name: "Deeps",
         complexityChange: ComplexityChange.UP,
         expansion: Expansion.NATURE_INCARNATE,
+        specialTokens: [SpecialityToken.DEEPS],
       },
     ],
 },
@@ -283,8 +330,10 @@ aspects: [
         name: "Spreading Hostility",
         complexityChange: ComplexityChange.UP,
         expansion: Expansion.NATURE_INCARNATE,
+        tokens: [Token.BADLANDS],
       },
     ],
+    tokens: [Token.WILDS]
 },
 { name: "Sharp Fangs Behind the Leaves",
   complexity: Complexity.MODERATE,
@@ -309,6 +358,7 @@ aspects: [
       expansion: Expansion.NATURE_INCARNATE,
     },
   ],
+  tokens: [Token.BEASTS],
 },
 { name: "Heart of the Wildfire",
   complexity: Complexity.HIGH,
@@ -326,6 +376,7 @@ aspects: [
         name: "Transforming",
         complexityChange: ComplexityChange.UP,
         expansion: Expansion.NATURE_INCARNATE,
+        tokens: [Token.BADLANDS, Token.BEASTS],
       },
     ],
 },
@@ -345,6 +396,8 @@ aspects: [
         name: "Locus",
         complexityChange: ComplexityChange.UP,
         expansion: Expansion.NATURE_INCARNATE,
+        tokens: [Token.VITALITY],
+        specialTokens: [SpecialityToken.LOCUS_INCARNA],
       },
     ],
 },
@@ -360,6 +413,7 @@ aspects: [
         utility: 2.5,
     },
     aspects: [],
+    tokens: [Token.STRIFE, Token.BEASTS],
 },
 { name: "Lure of the Deep Wilderness",
   complexity: Complexity.MODERATE,
@@ -377,8 +431,10 @@ aspects: [
       name: "Lair",
       complexityChange: ComplexityChange.UP,
       expansion: Expansion.NATURE_INCARNATE,
+      specialTokens: [SpecialityToken.LAIR_INCARNA],
     },
   ],
+  tokens: [Token.BADLANDS, Token.BEASTS, Token.WILDS, Token.DISEASE],
 },
 { name: "Many Minds Move as One",
   complexity: Complexity.MODERATE,
@@ -392,6 +448,7 @@ aspects: [
         utility: .2,
     },
     aspects: [],
+    tokens: [Token.BEASTS],
 },
 { name: "Shifting Memory of Ages",
   complexity: Complexity.MODERATE,
@@ -430,6 +487,7 @@ aspects: [
         utility: 1,
     },
     aspects: [],
+    tokens: [Token.BADLANDS],
 },
 {  name: "Volcano Looming High",
   complexity: Complexity.MODERATE,
@@ -443,6 +501,7 @@ aspects: [
         utility: 3,
     },
     aspects: [],
+    tokens: [Token.BADLANDS, Token.WILDS],
 },
 { name: "Shroud of Silent Mist",
   complexity: Complexity.HIGH,
@@ -475,6 +534,7 @@ aspects: [
       utility: .1,
   },
   aspects: [],
+  tokens: [Token.DISEASE, Token.BADLANDS],
 },
 { name: "Fractured Days Split the Sky",
   complexity: Complexity.VERY_HIGH,
@@ -606,6 +666,8 @@ aspects: [
         utility: 2,
     },
     aspects: [],
+    tokens: [Token.BADLANDS, Token.WILDS],
+    specialTokens: [SpecialityToken.BEHEMOTH_INCARNA],
 },
 { name: "Towering Roots of the Jungle",
   complexity: Complexity.MODERATE,
@@ -619,6 +681,8 @@ aspects: [
         utility: 1,
     },
     aspects: [],
+    tokens: [Token.VITALITY, Token.WILDS],
+    specialTokens: [SpecialityToken.ROOTS_INCARNA],
 },
 { name: "Hearth-Vigil",
   complexity: Complexity.MODERATE,
@@ -645,6 +709,8 @@ aspects: [
         utility: 1.5,
     },
     aspects: [],
+    tokens: [Token.BEASTS, Token.STRIFE],
+    specialTokens: [SpecialityToken.BREATH_INCARNA, SpecialityToken.DARK],
 },
 { name: "Relentless Gaze of the Sun",
   complexity: Complexity.HIGH,
@@ -658,6 +724,7 @@ aspects: [
         utility: 2.5,
     },
     aspects: [],
+    tokens: [Token.BADLANDS],
 },
 { name: "Wandering Voice Keens Delirium",
   complexity: Complexity.HIGH,
@@ -671,6 +738,8 @@ aspects: [
         utility: 1.5,
     },
     aspects: [],
+    tokens: [Token.STRIFE],
+    specialTokens: [SpecialityToken.VOICE_INCARNA],
 },
 { name: "Wounded Waters Bleeding",
   complexity: Complexity.HIGH,
@@ -684,7 +753,8 @@ aspects: [
         utility: .5,
     },
     aspects: [],
-    powersHint: "CAN CHANGE RADICALLY OVER THE COURSE OF THE GAME"
+    powersHint: "CAN CHANGE RADICALLY OVER THE COURSE OF THE GAME",
+    tokens: [Token.BEASTS, Token.DISEASE]
 },
 { name: "Dances Up Earthquakes",
   complexity: Complexity.VERY_HIGH,
@@ -698,6 +768,7 @@ aspects: [
       utility: 3,
   },
   aspects: [],
+  specialTokens: [SpecialityToken.QUAKE]
 }
 ]
 

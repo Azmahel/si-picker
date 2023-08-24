@@ -2,9 +2,7 @@
     display: flex;
     flex-direction: column; /* Change to row layout */
     padding: 5px; /* Add padding for spacing */
-    background-color: rgba(0, 0, 0, .6); /* Semi-transparent background color */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    width: 300px;
+    width: 250px;
   }
   .power-bars {
     display: flex;
@@ -14,7 +12,6 @@
   }
 
   .powers-hint {
-    
     font-size: 14px;
     flex-wrap: wrap; /* Allow header content to wrap on smaller screens */
     color: white;
@@ -26,9 +23,9 @@
     display: flex;
     flex-direction: column; /* Vertical layout */
     align-items: center; /* Align items at the center horizontally */
-    margin-left: 10px; /* Add margin between bars */
+    margin-left: 5px; /* Add margin between bars */
     height: 100%; /* Set the height of the container to 100% */
-    padding-left: 10px;
+    padding-left: 5px;
   }
   
   .power-bar-label {
