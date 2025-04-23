@@ -1,7 +1,7 @@
 import { Expansion } from "./spirit.module";
 
 export interface Messages {
-   readonly expansionNames: {[key: string] : string}
+   readonly expansionNames: Record<Expansion, string>;
 }
 
 export const messages: Messages = {
