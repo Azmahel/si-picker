@@ -50,6 +50,9 @@ export enum SpecialityToken {
   VOICE_INCARNA = 'WanderingVoice',
   WARRIOR_INCARNA = 'Warrior',
   INCARNA = 'Incarna',
+  METAL = 'Metal',
+  COVETS_LAIR = 'Lair_(marker)',
+  COVETS_INCARNA = 'CovetsGleaming',
 }
 
 
@@ -63,22 +66,24 @@ export enum ComplexityChange {
 }
 
 export enum Expansion {
-  BASE = "BASE", 
-  BRANCH_CLAW ="BRANCH_CLAW", 
-  JAGGED_EARTH = "JAGGED_EARTH", 
-  FEATHER_FLAME = "FEATHER_FLAME", 
-  HORIZONS = "HORIZONS", 
+  BASE = "BASE",
+  BRANCH_CLAW ="BRANCH_CLAW",
+  JAGGED_EARTH = "JAGGED_EARTH",
+  FEATHER_FLAME = "FEATHER_FLAME",
+  HORIZONS = "HORIZONS",
   NATURE_INCARNATE = "NATURE_INCARNATE",
+  APOCRYPHA = "APOCRYPHA"
 }
 
 export const incarna: SpecialityToken[] = [
-  SpecialityToken.LAIR_INCARNA, 
-  SpecialityToken.LOCUS_INCARNA, 
+  SpecialityToken.LAIR_INCARNA,
+  SpecialityToken.LOCUS_INCARNA,
   SpecialityToken.ROOTS_INCARNA,
   SpecialityToken.VOICE_INCARNA,
   SpecialityToken.BREATH_INCARNA,
   SpecialityToken.WARRIOR_INCARNA,
   SpecialityToken.BEHEMOTH_INCARNA,
+  SpecialityToken.COVETS_INCARNA,
 ]
 
 
@@ -90,8 +95,8 @@ export const spirits : Spirit[] = [
   complexity : Complexity.LOW,
   complexityValue: .1,
   expansion: Expansion.BASE,
-  powers: { 
-    offense: 5, 
+  powers: {
+    offense: 5,
     control: 1.5,
     fear: 2.5,
     defense: .5,
@@ -202,12 +207,12 @@ powers: {
   utility: 2,
 },
 aspects: [
-  { 
+  {
     name: "Might",
     complexityChange: ComplexityChange.UP,
     expansion: Expansion.FEATHER_FLAME,
   },
-  { 
+  {
     name: "Nourishing",
     complexityChange: ComplexityChange.UP,
     expansion: Expansion.NATURE_INCARNATE,
@@ -514,7 +519,7 @@ aspects: [
         defense: 1,
         utility: .1,
     },
-    aspects: [ 
+    aspects: [
       {
       name: "Stranded",
       complexityChange: ComplexityChange.DOWN,
@@ -769,7 +774,35 @@ aspects: [
   },
   aspects: [],
   specialTokens: [SpecialityToken.QUAKE]
-}
+},
+{ name: "Covets Gleaming Shards of Earth",
+  complexity: Complexity.VERY_HIGH,
+  complexityValue: .8,
+  expansion: Expansion.APOCRYPHA,
+  powers: {
+      offense: 5,
+      control: 4,
+      fear: 6,
+      defense: 1,
+      utility: 3,
+  },
+  aspects: [],
+  specialTokens: [SpecialityToken.METAL, SpecialityToken.COVETS_LAIR, SpecialityToken.COVETS_INCARNA,]
+},
+{ name: "Spreading Rot Renews the Earth",
+  complexity: Complexity.HIGH,
+  complexityValue: .7,
+  expansion: Expansion.APOCRYPHA,
+  powers: {
+      offense: 3,
+      control: 1,
+      fear: 1,
+      defense: 6,
+      utility: 5,
+  },
+  aspects: [],
+  tokens: [Token.WILDS, Token.DISEASE]
+},
 ]
 
 
