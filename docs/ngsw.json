@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1745427193736,
+  "timestamp": 1745427996112,
   "index": "/si-picker/index.html",
   "assetGroups": [
     {
@@ -29,6 +29,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "/si-picker/assets/expansion-icons/APOCRYPHA.png",
         "/si-picker/assets/expansion-icons/BRANCH_CLAW.png",
         "/si-picker/assets/expansion-icons/FEATHER_FLAME.png",
         "/si-picker/assets/expansion-icons/HORIZONS.png",
@@ -115,6 +116,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/si-picker/assets/expansion-icons/APOCRYPHA.png": "3eee17d961e70b6cf191419abfbfab4ac9cc0124",
     "/si-picker/assets/expansion-icons/BRANCH_CLAW.png": "cabe5c716e1b08545970635fdc4924afa44a66f8",
     "/si-picker/assets/expansion-icons/FEATHER_FLAME.png": "8c58cf3c7ca9b28fdf18f9fb381e7b89ceadc347",
     "/si-picker/assets/expansion-icons/HORIZONS.png": "ca37586674ce9b572fc69c59b76a51c458a77811",
