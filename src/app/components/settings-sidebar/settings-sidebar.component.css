@@ -18,7 +18,7 @@
   .count-label{
     font-weight: bold;
   }
-  
+
   /* Styles for the settings sidebar */
   .settings-sidebar {
     position: fixed;
@@ -33,12 +33,13 @@
     padding-top: 50px; /* Add top padding */
 
   }
-  
+
   .settings-sidebar.active {
     right: 0; /* Show sidebar when the .active class is applied */
+    overflow-y: auto
   }
-  
- 
+
+
   .filter-option {
     display: flex;
     align-items: center;
@@ -50,4 +51,3 @@
     overflow: hidden; /* Ensure SVGs do not overflow their cells */
 
   }
-  
